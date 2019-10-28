@@ -1,0 +1,24 @@
+.wrap{
+    padding-top: 20px;
+    height: 520px;
+    overflow: auto;
+  }
+  
+  .wrap::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  .wrap::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+  
+  .wrap::-webkit-scrollbar-track {
+    background: #6600CC;
+    border-radius: 10px;
+  }
+  .wrap::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,1); 
+  }
+  

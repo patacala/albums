@@ -1,1 +1,120 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+/**************************************************
+    RESET BROWSER STYLES
+**************************************************/   
+
+ul li {
+    list-style: none;
+    
+}
+
+ul {
+    padding-inline-start: 0;
+}
+
+
+
+/**************************************************
+    MAIN STILES
+**************************************************/    
+
+.content {
+    width: 95% ;
+    margin: 15px auto;
+}
+.main-wrapper{
+    width: 100%;
+    height: 95vh;
+    border-radius: 7px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .5);
+    display: flex;
+    overflow: hidden;    
+    background: #100e17;
+}
+
+    .main-wrapper .sidebar{
+        width: 200px;
+        min-width: 180px;
+    }
+    
+.sidebar {
+    padding: 15px;
+    /* height: 100vh; */
+    background: #6600CC;
+}    
+
+.sidebar .content-wrap{
+    padding-bottom: 30000px;
+    margin-bottom: -30000px;
+}
+
+
+.content-wrap{
+    width: 100%;
+    padding: 10px 20px;
+}
+
+header {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+    header h1{
+        margin-block-end:0px;
+        font-size: 24px;
+    }
+
+    header .add{
+        /* font-size: 20px; */
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+
+/**************************************************
+    GENERAL HELLPERS
+**************************************************/ 
+/* Flex */
+
+/* justify contet space-between*/
+.dflex-jc-sb{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dflex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dflex-jc-end{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* Space */
+.mr-10{
+    margin-right: 10px;
+}
+
+
+
+/* Font stile */
+.caption{
+    font-size: 10px;
+    color:#999999;
+}
+
+
+.pointer{
+    cursor: pointer;
+}
+
