@@ -2,8 +2,6 @@ import { Component, OnInit , TemplateRef } from '@angular/core';
 import { AlbumService } from 'src/app/services/album.service';
 import { Router } from '@angular/router';
 
-import Swal from 'sweetalert2';
-declare var $: any;
 
 @Component({
   selector: 'app-albums',

@@ -1,8 +1,12 @@
 import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
 import { URL_SERVICES } from "../../shared/config/config";
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+
+// services
 import { PhotoService } from 'src/app/services/photo.service';
 import { AlbumService } from 'src/app/services/album.service';
+
+// external Plugin
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
 
@@ -12,6 +16,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./photo.component.css']
 })
 export class PhotoComponent implements OnInit {
+
+  // declare vars
   overlideInfo = false;
   endpoint: string = URL_SERVICES+'files/' ;
   @Input() inputPhoto:any = {};
@@ -27,14 +33,17 @@ export class PhotoComponent implements OnInit {
       this.getAlbum();
   }
 
+  // sanityze photo by pass security
   sanitizerPhoto(photo){
     return this.sanitize.bypassSecurityTrustUrl(photo)
   }
+
 
   getTime(date) {
     return moment(date).fromNow(); 
   }
 
+  // crud photos
   deletePhoto(id){
     this.photoService.deletePhoto(id).subscribe((response:any) => {
       if(response.ok){

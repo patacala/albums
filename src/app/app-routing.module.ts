@@ -4,7 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AlbumsComponent } from './components/albums/albums.component';
 import { AlbumDetailsComponent } from './components/album-details/album-details.component';
 
-
+// routes 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
   {path: 'albums', component: AlbumsComponent },
