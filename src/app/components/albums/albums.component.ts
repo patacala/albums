@@ -22,7 +22,7 @@ export class AlbumsComponent implements OnInit {
   getAlbum(){
     this.albumService.getAlbums().subscribe((response: any) => {
       this.arrayAlbum = response.albums;
-      console.log(this.arrayAlbum)
+      // console.log(this.arrayAlbum)
     })
   }
 

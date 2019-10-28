@@ -1,1 +1,3 @@
-<p>album-details works!</p>
+<div class="wrap dflex-wrap">
+  <app-photo  *ngFor="let photo of arrayPhoto;" [inputPhoto]="photo" (outputReload)="findPhotoByAlbum()"></app-photo>      
+</div>

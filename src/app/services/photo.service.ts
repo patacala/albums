@@ -13,6 +13,18 @@ export class PhotoService {
     return this.http.get(`${this.endpoint}photo`).pipe()
   }
 
+  getPhotosByAlbum(id){
+    return this.http.get(`${this.endpoint}photo/find-album/${id}`).pipe()
+  }
+
+  deletePhoto(id){
+    return this.http.delete(`${this.endpoint}photo/${id}`).pipe()
+  }
+
+  updatePhoto(photo: any) {
+    return this.http.put(`${this.endpoint}photo/${photo._id}`,photo).pipe()
+  }
+
 
 }
 

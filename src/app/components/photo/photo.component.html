@@ -1,21 +1,37 @@
 
 <div class="photo-card">
   <div class="body">
-      <div class="overlide"></div>
+      <div *ngIf="overlideInfo" class="overlide-info">
+        <p><strong>Name:</strong> {{inputPhoto.name}}</p>
+        <p><strong>Size:</strong> {{inputPhoto.size}}</p>
+        <p><strong>Ext:</strong> {{inputPhoto.extension}}</p>
+        <p><a class="pointer" (click)="deletePhoto(inputPhoto._id)"><i class="fas fa-trash"></i> Delete image</a></p>
+        <p><a class="pointer" *ngIf="inputPhoto.album != ''" (click)="deletePhotoAlbun(inputPhoto)"><i class="fas fa-trash"></i> Delete from album</a></p>
+        <div class="row" *ngIf="inputPhoto.album == ''">
+          <div class="col-sm-12 form-group">
+              <select name="select" class="form-control" [(ngModel)]="albumValue" (change)="setAlbum(inputPhoto)" id="">
+                <option value="">Chose Album</option>
+                <option  *ngFor="let album of arrayAlbum" [attr.value]="album._id">{{album.name}}</option>
+              </select>
+          </div>
+        </div>
+        <!-- <a href="#" class="badge badge-primary">Primary</a> -->
+      </div>
+      <div *ngIf="!overlideInfo" class="overlide"></div>
       <img class="photo" [src]="sanitizerPhoto(endpoint+inputPhoto.name)" alt="">
   </div>
   <div class="footer">
       <div class="dflex-jc-sb">
-        <span class="caption ">24 October</span>
+        <span class="caption ">{{getTime(inputPhoto.date)}}</span>
         <div class=" dflex-jc-end">
           <a class="action pointer">
             <i class="far fa-heart"></i>
           </a>
-          <a class="action pointer">
+          <a class="action pointer" (click)="overlideInfo = !overlideInfo">
             <i class="fas fa-ellipsis-v"></i>
           </a>
         </div>
-        </div>   
+      </div>   
     </div>
 </div>
   

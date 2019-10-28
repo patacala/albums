@@ -1,12 +1,15 @@
-import { Component, OnInit , TemplateRef } from '@angular/core';
+import { Component, OnInit , TemplateRef, ViewChild } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup,FormControl, Validators, RequiredValidator } from '@angular/forms';
 import { FileUploadService } from '../../services/file-upload.service';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { AlbumService } from 'src/app/services/album.service';
-import Swal from 'sweetalert2';
 import { ActivatedRoute } from "@angular/router";
+import { HomeComponent } from "../../components/home/home.component";
+import { Router } from "@angular/router";
+
+import Swal from 'sweetalert2';
 declare var $: any;
 
 @Component({
@@ -22,11 +25,14 @@ export class HeaderComponent implements OnInit {
   filename: string ='';
   albumForm: string ='';
   actualPage: string = ''
+
   formFile: any = {
     album: '',
     profile: '',
     favorite: false
   }
+
+  @ViewChild(HomeComponent, {static: false}) home: HomeComponent;
 
 
   constructor(private modalService: BsModalService,
@@ -34,7 +40,8 @@ export class HeaderComponent implements OnInit {
               private albumService: AlbumService,
               private http:HttpClient,
               public sanitize: DomSanitizer,
-              public route: ActivatedRoute) { }
+              public route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.getAlbum()
@@ -48,32 +55,7 @@ export class HeaderComponent implements OnInit {
       console.log(this.arrayAlbum)
     })
   }
-
-  // createAlbum(){
-  //   let album = {
-  //     name:""
-  //   }
-  //   this.albumService.createAlbum(album).subscribe((response:any) =>{
-  //     console.log(response)
-  //     if(response.ok){
-        
-  //       Swal.fire({
-  //         title: 'Good Job!',
-  //         text: 'Album saved successfully',
-  //         type: 'success',
-  //         confirmButtonText: 'Ok'
-  //       })
-  //     }else{
-  //       Swal.fire({
-  //         title: 'Error!',
-  //         text: 'Could not save the album',
-  //         type: 'error',
-  //         confirmButtonText: 'Ok'
-  //       })
-  //     }
-  //   })
-  // }
-
+  
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
@@ -98,11 +80,9 @@ export class HeaderComponent implements OnInit {
         this.formFile.profile = profile
       }
     }
-    // console.log(event.target.files)
   }
 
   onSubmit(){
-    debugger
     const formData = new FormData();
     formData.append('album',this.formFile.album);
     // formData.append('favorite',this.formFile.favorite);
@@ -110,12 +90,20 @@ export class HeaderComponent implements OnInit {
     if($("#file").val('') != '' ){
       this.fileUploadService.up(formData, 'upload').subscribe(
         res => {
+          
+          // setTimeout(() => {
+          //   this.home.getPhotos();
+          // }, 3000);
+          
+          this.router.navigateByUrl('/');
+
           Swal.fire({
             title: 'Good Job!',
             text: 'Photo uploaded successfully',
             type: 'success',
             confirmButtonText: 'Ok'
           })
+          
           this.fileUpload = res
           this.modalRef.hide();
         },

@@ -1,3 +1,3 @@
 <div class="wrap dflex-wrap">
-    <app-photo  *ngFor="let photo of arrayPhoto;" [inputPhoto]="photo"></app-photo>
+    <app-photo  *ngFor="let photo of arrayPhoto;" [inputPhoto]="photo" (outputReload)="getPhotos()"></app-photo>
 </div>
