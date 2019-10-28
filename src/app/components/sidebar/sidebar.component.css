@@ -26,3 +26,11 @@
     .nav ul li i{
       margin-right: 20px;      
     }
+  
+  .nav a {
+    text-decoration: none;
+    color: inherit;
+  } 
+  .nav a:hover {
+    text-decoration: none;
+  } 

@@ -1,0 +1,9 @@
+<div class="wrap dflex-wrap">
+    <!-- <app-photo  *ngFor="let photo of arrayPhoto;" [inputPhoto]="photo"></app-photo> -->
+  <div class="card mb-3 mr-3 pointer"  *ngFor="let album of arrayAlbum" (click)="navigate(album)" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{album.name}}</h5>     
+      
+    </div>
+  </div>
+</div>

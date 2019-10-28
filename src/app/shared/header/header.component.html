@@ -1,10 +1,78 @@
 <header>
-    <div>
-        <h1>Favorite</h1>
-        <span class="caption">updated 4 days ago</span>
-    </div>
-    <section class="add">
-        <a class="pointer btn btn-secondary mr-10"><i class="far fa-images"></i> Add album</a>
-        <a class="pointer btn btn-primary"><i class="far fa-image"></i> Add photo</a>
-    </section>
+  <div>
+    <h1>Favorite</h1>
+    <span class="caption">updated 4 days ago</span>
+  </div>
+  <section class="add">
+    <a class="pointer btn btn-secondary mr-10" (click)="openModal(AddAlbum)"><i class="far fa-images"></i> Add album</a>
+    <a class="pointer btn btn-primary" (click)="openModal(AddPhoto); getAlbum() "><i class="far fa-image"></i> Add photo</a>
+  </section>
 </header>
+
+<ng-template class="modal" #AddPhoto>
+  <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Photo</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <div class="row mb-3">
+        <div class="col-12 ">
+          <form action=""  >
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                
+              </div>
+              <div class="custom-file">
+                <input type="file" (change)="onChangeFile($event)"  name="file" id="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+                <label class="custom-file-label" for="inputGroupFile03">{{filename}}</label>                  
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="album">Album</label>
+              <select class="form-control" [(ngModel)]="formFile.album"  name="album" id="album">
+                <option value="">Chose option</option>
+                <option  *ngFor="let album of arrayAlbum" [attr.value]="album._id">{{album.name | titlecase }}</option>
+              </select>
+            </div>
+            <!-- <div class="form-group">
+              <label for="favorite">Favorite</label>
+              <select class="form-control" [(ngModel)]="formFile.favorite" name="favorite" id="favorite">
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+              </select>
+            </div> -->
+            <input type="hidden" [(ngModel)]="formFile.profile" name="profile" id="profile">
+          </form>           
+          </div>
+      </div>
+      
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-primary" (click)="onSubmit()" >Upload</button>
+  </div>
+</ng-template>
+
+<ng-template class="modal" #AddAlbum>
+  <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Album</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col 12">
+        <div class="form-group">
+          <label for="">Name album</label>
+          <input class="form-control" type="text" [(ngModel)]="albumForm" name="album-form" id="albun-form">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-primary" (click)="saveAlbum()" >Save</button>
+  </div>
+</ng-template>
