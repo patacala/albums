@@ -15,7 +15,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PhotoComponent } from './components/photo/photo.component';
-import { HeaderComponent } from './shared/header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { AlbumsComponent } from './components/albums/albums.component';
 import { AlbumDetailsComponent } from './components/album-details/album-details.component';
@@ -27,7 +26,6 @@ import { AlbumDetailsComponent } from './components/album-details/album-details.
     HomeComponent,
     SidebarComponent,
     PhotoComponent,
-    HeaderComponent,
     AlbumsComponent,
     AlbumDetailsComponent
   ],
