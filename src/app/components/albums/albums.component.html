@@ -1,4 +1,5 @@
 <div class="wrap dflex-wrap">
+  <h1 *ngIf="arrayAlbum.length == 0">No albums created</h1>
     <!-- <app-photo  *ngFor="let photo of arrayPhoto;" [inputPhoto]="photo"></app-photo> -->
   <div class="card mb-3 mr-3 pointer"  *ngFor="let album of arrayAlbum" (click)="navigate(album)" style="width: 18rem;">
     <div class="card-body">

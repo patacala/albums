@@ -60,10 +60,12 @@
       opacity: 1;
       transition: .3s;
       line-height: 20px;
+      
     }
 
     .photo-card .body .overlide-info p{
       font-size: 12px;
+      margin-bottom: 5px;
     }
 
   .photo-card .footer{

@@ -85,16 +85,19 @@ export class HeaderComponent implements OnInit {
   onSubmit(){
     const formData = new FormData();
     formData.append('album',this.formFile.album);
-    // formData.append('favorite',this.formFile.favorite);
     formData.append('file',this.formFile.profile);
     if($("#file").val('') != '' ){
+
       this.fileUploadService.up(formData, 'upload').subscribe(
-        res => {
-          
+        res => {          
           // setTimeout(() => {
           //   this.home.getPhotos();
           // }, 3000);
-          
+          this.formFile.album = '';
+          this.formFile.profile = '';
+          this.filename = '';
+
+          this.modalRef.hide();
           this.router.navigateByUrl('/');
 
           Swal.fire({
@@ -103,9 +106,7 @@ export class HeaderComponent implements OnInit {
             type: 'success',
             confirmButtonText: 'Ok'
           })
-          
           this.fileUpload = res
-          this.modalRef.hide();
         },
         err => this.error = err
       )
@@ -120,20 +121,25 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  // Save new album
   saveAlbum(){
-    debugger
+    // debugger
     let album = {
       name: this.albumForm 
     }
     if(this.albumForm != ''){
       this.albumService.createAlbum(album).subscribe((response:any) => {   
         if(response.ok){
+          this.albumForm = '';
+          this.modalRef.hide();
+
           Swal.fire({
             title: 'Good Job!',
             text: 'Album saved successfully',
             type: 'success',
             confirmButtonText: 'Ok'
           })
+          
         }else{
           Swal.fire({
             title: 'Error!',

@@ -1,4 +1,15 @@
+<div class="row">
+    <div class="col-sm-2">
+        <button class="btn btn-primary" (click)="getPhotos()"><i class="fas fa-sync-alt"></i></button>
+    </div>
+    <div class="col-sm-4">
+        <input class="form-control" (keyup.enter)="getPhotosByName()" [(ngModel)]="filterName" type="text" name="name" placeholder="Search by name">
+    </div>
+</div>
 <div class="wrap dflex-wrap">
+    
+    <h1 *ngIf="arrayPhoto.length == 0">They have not yet uploaded photos</h1>
     <!-- add componenet custon -->
     <app-photo  *ngFor="let photo of arrayPhoto;" [inputPhoto]="photo" (outputReload)="getPhotos()"></app-photo>
+
 </div>
